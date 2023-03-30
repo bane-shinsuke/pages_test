@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ja -> En -> Ja</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<div class="loading-spinner" style="display: none;" align="left"></div>
+<div class="copy-success-message">
+  <div class="alert alert-success" role="alert">
+    コピーしました
+  </div>
+</div>
+    <div class="container-fluid">
+<!--
+      <h1 class="text-center my-5">日本語 → 英語 → 日本語</h1>
+-->
+<br>
+      <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+          <label for="inputTextArea" class="form-label">日本語の文章を入力してください</label>
+          <textarea class="form-control" id="inputTextArea" rows="5">最近、どうしてる？</textarea>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+          <button class="btn btn-primary" id="translateButton">AI変換</button>
+
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+          <label for="japaneseResultTextArea" class="form-label">日本語</label>
+          <textarea class="form-control" id="japaneseResultTextArea" rows="5" readonly></textarea>
+          <button class="btn btn-secondary mt-2" id="copyJapaneseResultButton" data-clipboard-target="#japaneseResultTextArea">コピー</button>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+          <label for="englishResultTextArea" class="form-label">英語</label>
+          <textarea class="form-control" id="englishResultTextArea" rows="5" readonly></textarea>
+          <button class="btn btn-secondary mt-2" id="copyEnglishResultButton" data-clipboard-target="#englishResultTextArea">コピー</button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+

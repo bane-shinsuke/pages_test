@@ -1,0 +1,56 @@
+body {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+.form-label {
+      font-weight: 500;
+}
+
+.btn {
+	margin-right: 10px;
+}
+
+
+.loading-spinner {
+  position: fixed;
+  top: 30%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 45px;
+  height: 45px;
+  margin: 0;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #7fb3d5;
+  animation: loading-spinner 1s infinite linear;
+}
+
+@keyframes loading-spinner {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.copy-success-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copy-success-message.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.alert {
+  margin: 0;
+}
+
