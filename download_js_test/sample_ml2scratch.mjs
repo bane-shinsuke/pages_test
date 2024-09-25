@@ -1,4 +1,4 @@
-// add comment 20240925-2
+// add comment 20240925-3
 var global$1 = typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};
 
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
