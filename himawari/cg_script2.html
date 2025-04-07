@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プレゼント開封アニメーション</title>
+  <style>
+    /* 全体のデザイン */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff; /* お好みの背景色に */
+    }
+
+    /* プレゼントボックス全体のコンテナ */
+    #present-container {
+      position: relative;
+      width: 250px;  /* お好みでサイズ調整 */
+      height: 250px; /* お好みでサイズ調整 */
+      overflow: hidden; /* アニメーション時に画像がはみ出すのを防ぐ */
+    }
+
+    /* ボックス本体 */
+    #present-box {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* Base64データURL を背景画像として設定 */
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAD+klEQVR4nO3dy23DMAAFQSnduP9iXI5TgK0PYkjkBjMF8PG04I3LAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0rKOGX8vyGrXNF54XnPm44Ewutw7ox8/dgwB/JVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgcd4zdi7/jmBxztVRES1OECyO3RUT0eKAYLHv7oiIFjsEi22j4iFabBAsPhsdjdH7TEmweDdLLGa5B9NYRw2/nstr1DbwvfVxfz+8sIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIGPcJxSLTyimNdNvNY/RF2DLOqAfXli8myUSs9yDaQgWn42Oxeh9piRYbBsVDbFig2Cx7+54iBU7BItjd0VErDggWJxzdUzEihMEi/OuiopYcZJgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFb/QUBjgxhijnwAAAABJRU5ErkJggg==") 
+                  no-repeat center / cover;
+      animation: box-open 3s forwards;
+    }
+
+    /* クーポン画像（別途ファイルを用意してね） */
+    #coupon {
+      display: none; /* 最初は非表示 */
+      width: 300px;  /* お好みでサイズ調整 */
+      max-width: 90%; /* スマホ等で幅が小さい時に縮小 */
+    }
+
+    /* メッセージ */
+    #message {
+      display: none; /* 最初は非表示 */
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 20px;
+      color: #333333;
+    }
+
+    /* プレゼントボックスが開くアニメーション */
+    @keyframes box-open {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+      100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- プレゼントボックス -->
+  <div id="present-container">
+    <div id="present-box"></div>
+  </div>
+
+  <!-- クーポン画像 -->
+  <img id="coupon" src="coupon.png" alt="クーポン画像">
+
+  <!-- メッセージ -->
+  <div id="message">
+    この画面をキャプチャして、お店で見せてね♪
+  </div>
+
+  <script>
+    // ボックスのアニメーションが終了したらクーポン画像とメッセージを表示
+    const presentBox = document.getElementById("present-box");
+    presentBox.addEventListener("animationend", () => {
+      document.getElementById("present-container").style.display = "none";
+      document.getElementById("coupon").style.display = "block";
+      document.getElementById("message").style.display = "block";
+    });
+  </script>
+</body>
+</html>
