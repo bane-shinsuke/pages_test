@@ -37,7 +37,8 @@
 
     #headline,
     #coupon-image,
-    #message {
+    #message,
+    #timestamp {
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s ease;
@@ -45,7 +46,8 @@
 
     #headline.show,
     #coupon-image.show,
-    #message.show {
+    #message.show,
+    #timestamp.show {
       opacity: 1;
       visibility: visible;
     }
@@ -57,12 +59,14 @@
     }
 
     #coupon-image {
-      max-width: 60%;
+      max-width: 80%; /* 少し大きく */
     }
 
-    #message {
-      font-size: 1.2em;
-      margin-top: 20px;
+    #message,
+    #timestamp {
+      font-size: 0.9em; /* 少し小さく */
+      margin-top: 12px;
+      color: #444;
     }
 
     button {
@@ -86,7 +90,8 @@
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
     <div id="headline"></div>
     <img id="coupon-image" src="coupon.png" alt="クーポン">
-    <div id="message">この画面をキャプチャして保存してね♩</div>
+    <div id="message">スマホでこの画面を写真に撮って、お店で見せてね♪</div>
+    <div id="timestamp"></div>
   </div>
 
   <script>
@@ -95,14 +100,20 @@
       const headline = document.getElementById('headline');
       const couponImage = document.getElementById('coupon-image');
       const message = document.getElementById('message');
+      const timestamp = document.getElementById('timestamp');
 
-      // URLパラメータから「name」を取得
+      // URLパラメータから名前取得（例: ?name=Reina）
       const params = new URLSearchParams(window.location.search);
-      const name = params.get("name") || "Reina"; // デフォルトはReina
-
-      // 安全にHTMLへ挿入（innerTextでスクリプト無効化）
+      const name = params.get("name") || "Reina";
       headline.innerText = `${name}さんからのスペシャルギフト⭐️\n『煮卵おひとつ無料！』`;
 
+      // 現在時刻を yyyy/MM/dd hh:mm 形式で表示
+      const now = new Date();
+      const pad = (n) => n.toString().padStart(2, '0');
+      const formatted = "(" + `${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}` + ")";
+      timestamp.innerText = formatted;
+
+      // アニメーション開始
       setTimeout(function () {
         boxImage.classList.add('fade-out');
 
@@ -111,6 +122,7 @@
           headline.classList.add('show');
           couponImage.classList.add('show');
           message.classList.add('show');
+          timestamp.classList.add('show');
         }, 2000);
       }, 3500);
     });
