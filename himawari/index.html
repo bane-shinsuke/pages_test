@@ -56,6 +56,7 @@
       font-size: 1.2em;
       margin-bottom: 15px;
       color: #333;
+      margin-bottom: 15px;
     }
 
     #coupon-image {
@@ -90,7 +91,7 @@
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
     <div id="headline"></div>
     <img id="coupon-image" src="coupon.png" alt="クーポン">
-    <div id="message">スマホでこの画面をキャプチャして、お店で見せてね♪</div>
+    <div id="message">スマホでこの画面をキャプチャしてお店で見せてね♪</div>
     <div id="timestamp"></div>
   </div>
 
@@ -105,7 +106,7 @@
       // URLパラメータから名前取得（例: ?name=Reina）
       const params = new URLSearchParams(window.location.search);
       const name = params.get("name") || "Reina";
-      headline.innerText = `${name}さんからのスペシャルギフト⭐️\n『煮卵おひとつ無料！』`;
+      headline.innerText = `${name}さんからのスペシャルギフト⭐️`;
 
       // 現在時刻を yyyy/MM/dd hh:mm 形式で表示
       const now = new Date();
