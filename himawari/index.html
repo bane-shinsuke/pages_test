@@ -35,29 +35,34 @@
       opacity: 0;
     }
 
-    #coupon-image {
-      max-width: 60%; /* 小さくする */
+    #headline,
+    #coupon-image,
+    #message {
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s ease;
     }
 
-    #coupon-image.show {
+    #headline.show,
+    #coupon-image.show,
+    #message.show {
       opacity: 1;
       visibility: visible;
+    }
+
+    #headline {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    #coupon-image {
+      max-width: 60%;
     }
 
     #message {
       font-size: 1.2em;
       margin-top: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 2s ease;
-    }
-
-    #message.show {
-      opacity: 1;
-      visibility: visible;
     }
 
     button {
@@ -79,6 +84,7 @@
 <body>
   <div class="container">
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
+    <div id="headline">Reinaさんからのスペシャルギフト⭐️</div>
     <img id="coupon-image" src="coupon.png" alt="クーポン">
     <div id="message">この画面をキャプチャして保存してね♩</div>
   </div>
@@ -86,6 +92,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const boxImage = document.getElementById('box-image');
+      const headline = document.getElementById('headline');
       const couponImage = document.getElementById('coupon-image');
       const message = document.getElementById('message');
 
@@ -94,10 +101,11 @@
 
         setTimeout(function () {
           boxImage.style.display = 'none';
+          headline.classList.add('show');
           couponImage.classList.add('show');
           message.classList.add('show');
-        }, 2000); // フェードアウト時間
-      }, 3000); // ← 表示時間を3500ミリ秒に短縮
+        }, 2000);
+      }, 3500);
     });
   </script>
 </body>
