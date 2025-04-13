@@ -109,10 +109,13 @@
       headline.innerHTML = `<span style="color: #A52A2A;">${name}</span>さんからのスペシャルギフト⭐️<br>『${eggImage} 煮卵おひとつ無料！』`;
 
       // 現在時刻を yyyy/MM/dd hh:mm 表示
-      const now = new Date();
-      const pad = (n) => n.toString().padStart(2, '0');
-      const formatted = `(${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())} 発行)`;
-      timestamp.innerText = formatted;
+      // const now = new Date();
+      // const pad = (n) => n.toString().padStart(2, '0');
+      // const formatted = `(${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())} 発行)`;
+      // timestamp.innerText = formatted;
+
+      // 文言を追加
+      timestamp.innerText = "（※お一人様一回限定となります）";
 
       // アニメーション
       setTimeout(function () {
