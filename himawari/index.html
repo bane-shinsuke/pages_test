@@ -14,6 +14,7 @@
       min-height: 100vh;
       background-color: #f5f5f5;
       font-family: sans-serif;
+      flex-direction: column;
     }
 
     .container {
@@ -51,13 +52,35 @@
       font-size: 1.5em;
       margin-top: 20px;
     }
+
+    #download-link {
+      margin-top: 20px;
+      display: none;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffcc00;
+      color: #333;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ffdd33;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
     <img id="coupon-image" src="coupon.png" alt="クーポン">
-    <div id="message">この画面をキャプチャして保存してね！</div>
+    <div id="message">煮卵プレゼント！</div>
+    <a id="download-link" href="coupon.png" download="coupon.png">
+      <button>画像を保存する</button>
+    </a>
   </div>
 
   <script>
@@ -65,18 +88,18 @@
       const boxImage = document.getElementById('box-image');
       const couponImage = document.getElementById('coupon-image');
       const message = document.getElementById('message');
+      const downloadLink = document.getElementById('download-link');
 
-      // 5秒後にbox-imageをフェードアウト
       setTimeout(function () {
         boxImage.classList.add('fade-out');
 
-        // フェードアウトが終わったらcouponとmessageをフェードイン
         setTimeout(function () {
           boxImage.style.display = 'none';
           couponImage.classList.add('show');
           message.classList.add('show');
-        }, 2000); // boxのフェードアウト時間
-      }, 3000);
+          downloadLink.style.display = 'block'; // ボタンを表示
+        }, 2000);
+      }, 5000);
     });
   </script>
 </body>
