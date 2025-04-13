@@ -8,21 +8,20 @@
     body {
       margin: 0;
       padding: 0;
+      background-color: #ffffff;
+      font-family: sans-serif;
+    }
+
+    .center-screen {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background-color: #ffffff;
-      font-family: sans-serif;
-      flex-direction: column;
     }
 
     .container {
       text-align: center;
-    }
-
-    img {
-      height: auto;
+      padding: 20px;
     }
 
     #box-image {
@@ -56,39 +55,28 @@
       font-size: 1.2em;
       margin-bottom: 15px;
       color: #333;
-      margin-bottom: 15px;
     }
 
     #coupon-image {
-      max-width: 80%; /* 少し大きく */
+      max-width: 60%; /* 大きめに戻す */
     }
 
     #message,
     #timestamp {
-      font-size: 0.9em; /* 少し小さく */
+      font-size: 0.9em; /* 小さめ */
       margin-top: 12px;
       color: #444;
-    }
-
-    button {
-      font-size: 1em;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #ffcc00;
-      color: #333;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    button:hover {
-      background-color: #ffdd33;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- 最初のギフトボックス表示用エリア -->
+  <div id="box-screen" class="center-screen">
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
+  </div>
+
+  <!-- クーポン表示エリア -->
+  <div class="container">
     <div id="headline"></div>
     <img id="coupon-image" src="coupon.png" alt="クーポン">
     <div id="message">スマホでこの画面をキャプチャしてお店で見せてね♪</div>
@@ -97,6 +85,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const boxScreen = document.getElementById('box-screen');
       const boxImage = document.getElementById('box-image');
       const headline = document.getElementById('headline');
       const couponImage = document.getElementById('coupon-image');
@@ -108,18 +97,18 @@
       const name = params.get("name") || "Reina";
       headline.innerText = `${name}さんからのスペシャルギフト⭐️`;
 
-      // 現在時刻を yyyy/MM/dd hh:mm 形式で表示
+      // 現在時刻を yyyy/MM/dd hh:mm 表示
       const now = new Date();
       const pad = (n) => n.toString().padStart(2, '0');
-      const formatted = "(" + `${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}` + ")";
+      const formatted = `(${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())})`;
       timestamp.innerText = formatted;
 
-      // アニメーション開始
+      // アニメーション
       setTimeout(function () {
         boxImage.classList.add('fade-out');
 
         setTimeout(function () {
-          boxImage.style.display = 'none';
+          boxScreen.style.display = 'none'; // 中央表示部分を非表示
           headline.classList.add('show');
           couponImage.classList.add('show');
           message.classList.add('show');
