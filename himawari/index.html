@@ -12,7 +12,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background-color: #f5f5f5;
+      background-color: #ffffff;
       font-family: sans-serif;
       flex-direction: column;
     }
@@ -84,7 +84,7 @@
 <body>
   <div class="container">
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
-    <div id="headline">Reinaさんからのスペシャルギフト⭐️<br>『煮卵おひとつ無料！』</div>
+    <div id="headline"></div>
     <img id="coupon-image" src="coupon.png" alt="クーポン">
     <div id="message">この画面をキャプチャして保存してね♩</div>
   </div>
@@ -95,6 +95,13 @@
       const headline = document.getElementById('headline');
       const couponImage = document.getElementById('coupon-image');
       const message = document.getElementById('message');
+
+      // URLパラメータから「name」を取得
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name") || "Reina"; // デフォルトはReina
+
+      // 安全にHTMLへ挿入（innerTextでスクリプト無効化）
+      headline.innerText = `${name}さんからのスペシャルギフト⭐️\n『煮卵おひとつ無料！』`;
 
       setTimeout(function () {
         boxImage.classList.add('fade-out');
