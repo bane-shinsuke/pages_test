@@ -28,11 +28,13 @@
       align-items: center;
       min-height: 100vh;
       background-color: transparent; /* 初期状態は透明 */
-      transition: background-color 2s ease; /* 背景色のフェードイン */
+      transition: background-image 2s ease; /* 背景画像のフェードイン */
     }
 
     .container.show-background {
-      background-color: #ffe4b5; /* 薄いオレンジ色 */
+      background-image: url('background_orange.png'); /* 背景画像を設定 */
+      background-size: cover; /* 画像をカバーするように表示 */
+      background-position: center; /* 画像を中央に配置 */
     }
 
     #box-image {
@@ -95,7 +97,7 @@
       スマホでこの画面をスクショ保存して
       <br>
       <a href="https://maps.app.goo.gl/rBqmvKNVe5AchuKM6" target="_blank" rel="noopener noreferrer">お店</a>
-      でご提示ください！
+      でご提示ください📱
     </div>
     <div id="timestamp"></div>
   </div>
