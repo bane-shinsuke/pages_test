@@ -22,11 +22,11 @@
     }
 
     img {
-      max-width: 100%;
       height: auto;
     }
 
     #box-image {
+      max-width: 100%;
       opacity: 1;
       transition: opacity 2s ease;
     }
@@ -35,27 +35,29 @@
       opacity: 0;
     }
 
-    #coupon-image,
-    #message {
+    #coupon-image {
+      max-width: 60%; /* 小さくする */
       opacity: 0;
       visibility: hidden;
       transition: opacity 2s ease;
     }
 
-    #coupon-image.show,
-    #message.show {
+    #coupon-image.show {
       opacity: 1;
       visibility: visible;
     }
 
     #message {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 2s ease;
     }
 
-    #download-link {
-      margin-top: 20px;
-      display: none;
+    #message.show {
+      opacity: 1;
+      visibility: visible;
     }
 
     button {
@@ -66,6 +68,7 @@
       background-color: #ffcc00;
       color: #333;
       cursor: pointer;
+      margin-top: 20px;
     }
 
     button:hover {
@@ -77,10 +80,7 @@
   <div class="container">
     <img id="box-image" src="open_box.gif" alt="ギフトボックス">
     <img id="coupon-image" src="coupon.png" alt="クーポン">
-    <div id="message">煮卵プレゼント！</div>
-    <a id="download-link" href="coupon.png" download="coupon.png">
-      <button>画像を保存する</button>
-    </a>
+    <div id="message">この画面をキャプチャして保存してね♩</div>
   </div>
 
   <script>
@@ -88,7 +88,6 @@
       const boxImage = document.getElementById('box-image');
       const couponImage = document.getElementById('coupon-image');
       const message = document.getElementById('message');
-      const downloadLink = document.getElementById('download-link');
 
       setTimeout(function () {
         boxImage.classList.add('fade-out');
@@ -97,9 +96,8 @@
           boxImage.style.display = 'none';
           couponImage.classList.add('show');
           message.classList.add('show');
-          downloadLink.style.display = 'block'; // ボタンを表示
-        }, 2000);
-      }, 5000);
+        }, 2000); // フェードアウト時間
+      }, 3000); // ← 表示時間を3500ミリ秒に短縮
     });
   </script>
 </body>
