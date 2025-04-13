@@ -97,7 +97,7 @@
       スマホでこの画面をスクショ保存して
       <br>
       <a href="https://maps.app.goo.gl/rBqmvKNVe5AchuKM6" target="_blank" rel="noopener noreferrer">お店</a>
-      でご提示ください📱
+      でご提示ください！
     </div>
     <div id="timestamp"></div>
   </div>
@@ -115,7 +115,7 @@
       const params = new URLSearchParams(window.location.search);
       const name = params.get("name") || "xxx";
       const eggImage = '<img src="boiled_egg.png" alt="卵" style="width: 35px; vertical-align: middle;">';
-      headline.innerHTML = `<span style="color: #A52A2A;">${name}</span>さんからのスペシャルギフト⭐️<br>『${eggImage} 煮卵おひとつ無料！』`;
+      headline.innerHTML = `<strong><span style="color: #A52A2A;">${name}</span>さんからのスペシャルギフト</strong><br>『${eggImage} 煮卵おひとつ無料！』`;
 
       // 現在時刻を yyyy/MM/dd hh:mm 表示
       // const now = new Date();
