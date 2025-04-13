@@ -101,7 +101,8 @@
       // URLパラメータから名前取得（例: ?name=Reina）
       const params = new URLSearchParams(window.location.search);
       const name = params.get("name") || "xxx";
-      headline.innerText = `${name}さんからのスペシャルギフト⭐️\n『煮卵おひとつ無料！』`;
+      const eggImage = '<img src="egg.png" alt="卵" style="width: 35px; vertical-align: middle;">';
+      headline.innerHTML = `${name}さんからのスペシャルギフト⭐️<br>『${eggImage} 煮卵おひとつ無料！』`;
 
       // 現在時刻を yyyy/MM/dd hh:mm 表示
       const now = new Date();
