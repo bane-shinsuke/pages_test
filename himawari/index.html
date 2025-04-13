@@ -27,6 +27,12 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      background-color: transparent; /* 初期状態は透明 */
+      transition: background-color 2s ease; /* 背景色のフェードイン */
+    }
+
+    .container.show-background {
+      background-color: #fffeb0e5; /* さらに明るめの黄色 */
     }
 
     #box-image {
@@ -128,6 +134,7 @@
           couponImage.classList.add('show');
           message.classList.add('show');
           timestamp.classList.add('show');
+          document.querySelector('.container').classList.add('show-background'); // 背景色を変更
         }, 2000);
       }, 3500);
     });
