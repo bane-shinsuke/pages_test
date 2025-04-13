@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ギフトボックス アニメーション</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+      font-family: sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    #box-image {
+      opacity: 1;
+      transition: opacity 2s ease;
+    }
+
+    #box-image.fade-out {
+      opacity: 0;
+    }
+
+    #coupon-image,
+    #message {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 2s ease;
+    }
+
+    #coupon-image.show,
+    #message.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #message {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="box-image" src="open_box.gif" alt="ギフトボックス">
+    <img id="coupon-image" src="coupon.png" alt="クーポン">
+    <div id="message">この画面をキャプチャして保存してね！</div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const boxImage = document.getElementById('box-image');
+      const couponImage = document.getElementById('coupon-image');
+      const message = document.getElementById('message');
+
+      // 5秒後にbox-imageをフェードアウト
+      setTimeout(function () {
+        boxImage.classList.add('fade-out');
+
+        // フェードアウトが終わったらcouponとmessageをフェードイン
+        setTimeout(function () {
+          boxImage.style.display = 'none';
+          couponImage.classList.add('show');
+          message.classList.add('show');
+        }, 2000); // boxのフェードアウト時間
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
